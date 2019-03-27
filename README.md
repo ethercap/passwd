@@ -20,13 +20,13 @@
 
 在命令行执行
 ```
-php composer.phar require "ethercap/passwd" "dev"
+php composer.phar require "ethercap/passwd" "~1.0.0"
 ```
 
 或加入
 
 ```
-"ethercap": "dev"
+"ethercap": "~1.0.0"
 ```
 
 到你的`composer.json`文件中的require段。
@@ -69,10 +69,12 @@ return [
  - 各位可以自行配置加解密算法。如果不配置，会使用默认的加解密算法。默认采用的是Yii2自带的encryptByPassword方法，大家可以放心使用。
 
 **数据库配置**
+
 你需要在数据库建立对应的密码表，sql在src/sql/passwd.sql中，可以通过数据库导入，建立相应的数据库表。
 
 **使用**
-通过上述的操作，我们就可以使用密码本了。访问http://yourdomain.com/passwd，我们就可以看到对应的效果了，祝使用愉快。如果有任何功能建议，欢迎联系我们。
+
+通过上述的操作，我们就可以使用密码本了。访问http://yourdomain.com/passwd ，我们就可以看到对应的效果了，祝使用愉快。如果有任何功能建议，欢迎联系我们。
 
 广告
 --------------

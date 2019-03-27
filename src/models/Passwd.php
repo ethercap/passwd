@@ -3,26 +3,23 @@
 namespace ethercap\passwd\models;
 
 use Yii;
-use yii\helpers\ArrayHelper;
 use yii\db\ActiveRecord;
-use yii\behaviors\TimestampBehavior;
 
 /**
  * 该model对应数据库表 "passwd".
  *
-* @property integer $id 
-* @property string $group 分类
-* @property string $title 标题
-* @property string $loginName 登录名
-* @property string $passwd 密码
-* @property string $url 网址
-* @property string $content 备注
-* @property string $creationTime 
-* @property string $updateTime 
+ * @property int $id
+ * @property string $group 分类
+ * @property string $title 标题
+ * @property string $loginName 登录名
+ * @property string $passwd 密码
+ * @property string $url 网址
+ * @property string $content 备注
+ * @property string $creationTime
+ * @property string $updateTime
  */
 class Passwd extends \yii\db\ActiveRecord
 {
-
     public $_passwd1;
     public $_passwd2;
 
@@ -30,9 +27,8 @@ class Passwd extends \yii\db\ActiveRecord
         '服务器' => '服务器',
         '数据库' => '数据库',
         '网站' => '网站',
-        '默认分组' => '默认分组'
+        '默认分组' => '默认分组',
     ];
-
 
     /**
      * @inheritdoc
@@ -70,19 +66,19 @@ class Passwd extends \yii\db\ActiveRecord
     public function checkPasswd($attribute, $params)
     {
         if (!$this->hasErrors()) {
-            if($this->passwd1 != $this->passwd2) {
-                $this->addError($attribute, "两次密码不相等");
+            if ($this->passwd1 != $this->passwd2) {
+                $this->addError($attribute, '两次密码不相等');
             }
         }
     }
 
     public function getPasswd1()
     {
-        if($this->_passwd1) {
+        if ($this->_passwd1) {
             return $this->_passwd1;
         }
-        if(empty($this->passwd)) {
-            $this->_passwd1 = "";
+        if (empty($this->passwd)) {
+            $this->_passwd1 = '';
             return $this->_passwd1;
         }
         $module = Yii::$app->controller->module;
@@ -97,7 +93,7 @@ class Passwd extends \yii\db\ActiveRecord
 
     public function getPasswd2()
     {
-        if($this->_passwd2) {
+        if ($this->_passwd2) {
             return $this->_passwd2;
         }
         $this->_passwd2 = $this->_passwd1;
@@ -131,16 +127,15 @@ class Passwd extends \yii\db\ActiveRecord
 
     public function beforeSave($insert)
     {
-        if(empty($this->key)) {
+        if (empty($this->key)) {
             $this->key = Yii::$app->security->generateRandomString(20);
         }
-        if($this->_passwd1) {
+        if ($this->_passwd1) {
             $module = Yii::$app->controller->module;
             $this->passwd = call_user_func($module->encodePasswd, $this->_passwd1, $this->key, $module->salt);
         }
         return parent::beforeSave($insert);
     }
-
 
     public function behaviors()
     {
@@ -148,11 +143,10 @@ class Passwd extends \yii\db\ActiveRecord
             [
                 'class' => \lspbupt\common\behaviors\DateTimeBehavior::className(),
                 'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['creationTime','updateTime'],
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['creationTime', 'updateTime'],
                     ActiveRecord::EVENT_BEFORE_UPDATE => ['updateTime'],
                 ],
             ],
         ];
     }
-
 }

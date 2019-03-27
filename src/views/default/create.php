@@ -1,5 +1,4 @@
 <?php
-use yii\helpers\Html;
 
 $this->title = '新建密码';
 $this->params['breadcrumbs'][] = ['label' => '密码列表', 'url' => ['index']];

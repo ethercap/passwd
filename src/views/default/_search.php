@@ -16,12 +16,12 @@ use yii\bootstrap\ActiveForm;
         'layout' => 'inline',
         'fieldConfig' => [
             'template' => '{beginWrapper}<div class="row"><div class="col-sm-3">{label}</div><div class="col-sm-9">{input}{error}{hint}</div></div>{endWrapper}',
-            'labelOptions' => ['class' => ""],
-            'options' => ['class' => 'form-group col-sm-6', "style"=>"padding-top:10px"],
+            'labelOptions' => ['class' => ''],
+            'options' => ['class' => 'form-group col-sm-6', 'style' => 'padding-top:10px'],
         ],
     ]); ?>
  
-    <?= $form->field($model, 'group')->dropDownList($model::$groupList,['maxlength' => true]) ?>
+    <?= $form->field($model, 'group')->dropDownList($model::$groupList, ['maxlength' => true]) ?>
     <?= $form->field($model, 'title') ?>
     <?= $form->field($model, 'loginName') ?>
     <div class="form-group" style="padding-top:10px">

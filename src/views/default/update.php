@@ -1,6 +1,5 @@
 <?php
 
-use yii\helpers\Html;
 
 $this->title = '修改密码: ' . ' ' . $model->title;
 $this->params['breadcrumbs'][] = ['label' => '密码列表', 'url' => ['index']];
