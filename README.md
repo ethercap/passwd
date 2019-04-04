@@ -34,7 +34,7 @@ php composer.phar require "ethercap/passwd" "~1.0.0"
 或加入
 
 ```
-"ethercap": "~1.0.0"
+"ethercap/passwd": "~1.0.0"
 ```
 
 到你的`composer.json`文件中的require段。
